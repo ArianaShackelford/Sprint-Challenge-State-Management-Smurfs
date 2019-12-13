@@ -2,15 +2,17 @@ import {
     GET_SMURFS_START,
     GET_SMURFS_SUCCESS,
     GET_SMURFS_FAILURE,
-    MAKE_THINE_SMURF
+    MAKE_THINE_SMURF,
+    MAKE_THINE_SMURF_SUCCESS,
+    MAKE_THINE_SMURF_FAILURE
 } from '../actions';
 
 const initialState = {
-    name: '',
-    age: 0,
-    height: '',
-    id: 0,
+    smurfs: [
+       
+    ],
     isGetting: false,
+    makeSmurf: false,
     error: ''
 }
 
@@ -25,9 +27,7 @@ const reducer = (state = initialState, action) => {
         case GET_SMURFS_SUCCESS:
             return {
                 ...state,
-                name: action.payload.name,
-                age: action.payload.age,
-                height: action.payload. height,
+                smurfs: action.payload,
                 isGetting: false
             }
         case GET_SMURFS_FAILURE:
@@ -39,8 +39,21 @@ const reducer = (state = initialState, action) => {
         case MAKE_THINE_SMURF:
             return {
                 ...state,
+                makeSmurf: true
             }
-        default:
+        case MAKE_THINE_SMURF_SUCCESS:
+            return {
+                ...state,
+                makeSmurf: false,
+                smurfs: action.payload
+            }
+        case MAKE_THINE_SMURF_FAILURE:
+            return {
+                ...state,
+                makeSmurf: false,
+                error: action.payload
+            }
+            default:
            return state;
     }
 }

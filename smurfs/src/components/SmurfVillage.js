@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import {getSmurfs} from '../actions';
 
 const SmurfVillage = props => {
+    console.log(props)
     return(
         <>
         <p>Here are all the smerfs!-- this is where I want all the smurfs to display</p>
-         {/* {props.map((smurf) => <div> {smurf.name} {smurf.age} {smurf.height} </div>)} */}
-         {props.state.map(villager => (
-             <Villagers key={villager.id}/>
-
+         {props.villagers.map(villager => (
+             <Villagers key={villager.id} villager={villager} />
          ))}
+         <button onClick={props.getSmurfs}>smurf village</button>
         </>
     )
 }
@@ -19,7 +19,7 @@ const SmurfVillage = props => {
 const mapStateToProps = state => {
     return {
         
-        state: state
+        villagers : state.smurfs
      };
  };
 

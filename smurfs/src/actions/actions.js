@@ -21,17 +21,18 @@ export const getSmurfs = () => dispatch => {
         })
 }
 
-export const makeSmurf = () => dispatch => {
+export const makeSmurf = (villager) => dispatch => {
     dispatch({type: MAKE_THINE_SMURF});
     axios
-    .post('http://localhost:3333/smurfs',{
-        name: 'Fred',
-        age: 349,
-        height: '20cm'
+    .post('http://localhost:3333/smurfs',villager)
+    .then(response => {
+        console.log(response);
+        dispatch({type: MAKE_THINE_SMURF_SUCCESS, payload: response.data})
     })
-    // .then(dispatch({type: MAKE_THINE_SMURF_SUCCESS, payload: response.state})(response),{
-    //     console.log(response);
-    // })
+    .catch(error => {
+        console.log(error)
+        dispatch({type: MAKE_THINE_SMURF_FAILURE, payload: error.response})
+    })
     
         
 
