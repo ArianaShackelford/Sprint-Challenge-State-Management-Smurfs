@@ -23,10 +23,28 @@ In this challenge, you are to build a Smurfs village utilizing context or Redux 
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] What problem does the context API help solve?
+
+  Context makes it easier to share values between components without having to eplicitly pass props through every level of the state tree. -- so it solves the problem of having to pass props to every component in between the giver and reciever.
+
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+The store holds the entire state tree of your application, it is immutable making it much easier to debug and side effects are less likely.
+
+Reducers tell you how the apps state changes in response to actions.
+
+Actions are what sends data to the store, they describe what happened but they don't tell store how state changed.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application state is global across the whole app, while coponent state is in a single component. Component state is used when you just want to store some data within a component, but it doesn't need to go to all of the app, for ex, a form. 
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+redux thunk is a function in a function in a function... I call it funkception. It allows your actions creators to return a function instead of an action.
+
 - [ ] What is your favorite state management system you've learned and this sprint? Please explain why!
+
+Context, because it feels easy in comparison to redux, however that will probably change when I'm not cramming my brain with so much info.
 
 ## Project Set Up
 
